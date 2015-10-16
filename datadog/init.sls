@@ -8,8 +8,11 @@ datadog-repo:
     - keyid: C7A7DA52
     - file: /etc/apt/sources.list.d/datadog.list
     {% elif grains['os_family'].lower() == 'redhat' %}
-    - name: Datadog, Inc.
+    - name: datadog
     - baseurl: http://yum.datadoghq.com/rpm/x86_64
+    - enabled: 1
+    - gpgcheck: 0
+    - priority: 1
     {% endif %}
  
 datadog-pkg:
