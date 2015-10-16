@@ -25,7 +25,7 @@ datadog-example:
   cmd.run:
     - name: cp /etc/dd-agent/datadog.conf.example /etc/dd-agent/datadog.conf
     # copy just if datadog.conf does not exists yet and the .example exists
-    - onlyif: test ! -f /etc/dd-agent/datadog.conf -a -f /etc/dd-agent/datadog.conf.example
+    - unless: test -f /etc/dd-agent/datadog.conf
     - require:
       - pkg: datadog-pkg
  
