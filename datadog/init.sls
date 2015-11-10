@@ -39,6 +39,15 @@ datadog-conf:
       - pkg: datadog-pkg
     - require:
       - cmd: datadog-example
+      
+datadog-conf-logging:
+  file.append:
+    - name: /etc/dd-agent/datadog.conf
+    - text: "log_level: WARN"
+    - watch:
+      - pkg: datadog-pkg
+    - require:
+      - cmd: datadog-example
  
 datadog-agent-service:
   service:
