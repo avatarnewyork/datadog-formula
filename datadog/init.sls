@@ -46,6 +46,8 @@ datadog-conf-logging:
     - text: "log_level: WARN"
     - require:
       - file: datadog-conf
+    - watch_in:
+      - service: datadog-agent-service
  
 datadog-agent-service:
   service:
