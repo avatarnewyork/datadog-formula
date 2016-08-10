@@ -10,9 +10,11 @@ datadog-repo:
     {% elif grains['os_family'].lower() == 'redhat' %}
     - name: datadog
     - baseurl: https://yum.datadoghq.com/rpm/{{ grains['cpuarch'] }}
+    - gpgkey: https://yum.datadoghq.com/DATADOG_RPM_KEY.public
     - enabled: 1
-    - gpgcheck: 0
+    - gpgcheck: 1
     - priority: 1
+    - sslverify: '1'
     {% endif %}
  
 datadog-pkg:
