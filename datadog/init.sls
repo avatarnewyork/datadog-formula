@@ -9,7 +9,7 @@ datadog-repo:
     - file: /etc/apt/sources.list.d/datadog.list
     {% elif grains['os_family'].lower() == 'redhat' %}
     - name: datadog
-    - baseurl: http://yum.datadoghq.com/rpm/x86_64
+    - baseurl: https://yum.datadoghq.com/rpm/{{ grains['cpuarch'] }}
     - enabled: 1
     - gpgcheck: 0
     - priority: 1
@@ -18,6 +18,7 @@ datadog-repo:
 datadog-pkg:
   pkg.latest:
     - name: datadog-agent
+    - refresh: True
     - require:
       - pkgrepo: datadog-repo
  
