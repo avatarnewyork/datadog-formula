@@ -9,18 +9,20 @@ datadog-repo:
     - file: /etc/apt/sources.list.d/datadog.list
     {% elif grains['os_family'].lower() == 'redhat' %}
     - name: datadog
-    - baseurl: https://yum.datadoghq.com/rpm/{{ grains['cpuarch'] }}
+    - baseurl: https://yum.datadoghq.com/rpm/{{ grains['cpuarch'] }}/
     - gpgkey: https://yum.datadoghq.com/DATADOG_RPM_KEY.public
     - enabled: 1
     - gpgcheck: 1
     - priority: 1
     - sslverify: '1'
     {% endif %}
- 
+
 datadog-pkg:
-  pkg.latest:
+  pkg.installed:
     - name: datadog-agent
     - refresh: True
+    - version: 5.8.5-1.x86_64
+      - ignore_epoch: True
     - require:
       - pkgrepo: datadog-repo
  
