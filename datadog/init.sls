@@ -22,7 +22,7 @@ datadog-pkg:
     - name: datadog-agent
     - refresh: True
     - version: 5.8.5-1.x86_64
-      - ignore_epoch: True
+    - ignore_epoch: True
     - require:
       - pkgrepo: datadog-repo
  
