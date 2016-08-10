@@ -20,9 +20,8 @@ datadog-repo:
 datadog-pkg:
   pkg.installed:
     - name: datadog-agent
+    - allow_updates: True
     - refresh: True
-    - version: 5.8.5-1.x86_64
-    - ignore_epoch: True
     - require:
       - pkgrepo: datadog-repo
  
